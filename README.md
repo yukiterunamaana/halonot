@@ -1,4 +1,5 @@
 # halonot
+### ‎חלונות‏ - windows (Heb.)
 
 An open-source implementation of Arc Browser's Easel. Now available on Windows 10 and Linux!
 
