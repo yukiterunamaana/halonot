@@ -1,8 +1,6 @@
 # halonot
 ### ‎חלונות‏ - windows (Heb.)
 
-An open-source implementation of Arc Browser's Easel. Now available on Windows 10 and Linux!
-
 ## Getting Started
 
 This project is a starting point for a Flutter application.
