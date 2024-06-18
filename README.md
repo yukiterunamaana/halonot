@@ -1,6 +1,5 @@
 # halonot
-
-An open-source implementation of Arc Browser's Easel. Now available on Windows 10 and Linux!
+### ‎חלונות‏ - windows (Heb.)
 
 ## Getting Started
 
