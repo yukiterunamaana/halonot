@@ -29,7 +29,7 @@ class _InteractiveBoardState extends State<InteractiveBoard> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Interactive Board'),
+        backgroundColor: Colors.pink.shade100,
         actions: [
           Switch(
             value: _showGrid,
