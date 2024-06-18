@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:halonot/global_values.dart';
+import 'package:halonot/widget/parent_resizable_widget.dart';
 import 'dart:math';
+
+import 'package:halonot/widget/parent_widget.dart';
 
 void main() {
   runApp(MyApp());
@@ -78,7 +82,7 @@ class _InteractiveBoardState extends State<InteractiveBoard> {
                   },
                   onDragEnd: (details) {
                     print('Drag ended');
-                    _snapWidgetsToGrid();
+                    if (_snapToGrid) _snapWidgetsToGrid();
                   },
                 ),
               )),
@@ -86,25 +90,38 @@ class _InteractiveBoardState extends State<InteractiveBoard> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          setState(() {
-            _widgets.add(WidgetData(
-              child: Container(
-                width: 100,
-                height: 100,
-                decoration: BoxDecoration(
-                  color: Colors
-                      .primaries[Random().nextInt(Colors.primaries.length)],
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Center(
-                  child: Text(
-                    'Widget ${_widgets.length + 1}',
-                    style: TextStyle(fontSize: 18),
-                  ),
-                ),
+          showMenu(
+            context: context,
+            position: RelativeRect.fromLTRB(100, 100, 100, 100),
+            items: [
+              PopupMenuItem(
+                child: Text('Add ParentWidget'),
+                value: 'ParentWidget',
               ),
-              offset: Offset(0, 0),
-            ));
+              PopupMenuItem(
+                child: Text('Add ParentResizableWidget'),
+                value: 'ParentResizableWidget',
+              ),
+              // PopupMenuItem(
+              //   child: Text('Add Blue Widget'),
+              //   value: 'blue',
+              // ),
+            ],
+            elevation: 8.0,
+          ).then((value) {
+            if (value != null) {
+              setState(() {
+                if (value == 'ParentWidget')
+                  _widgets.add(
+                      WidgetData(child: ParentWidget(), offset: Offset(0, 0)));
+                else if (value == 'ParentResizableWidget')
+                  _widgets.add(WidgetData(
+                      child: ParentResizableWidget(
+                        gridSize: grid_step as double,
+                      ),
+                      offset: Offset(0, 0)));
+              });
+            }
           });
         },
         child: Icon(Icons.add),
