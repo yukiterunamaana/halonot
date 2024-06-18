@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:halonot/widgets/parent_widget.dart';
 
 class InteractiveBoard extends StatefulWidget {
   @override
@@ -35,7 +36,9 @@ class _InteractiveBoardState extends State<InteractiveBoard> {
           ),
         ],
       ),
-      body: Stack(
+      body:
+
+      Stack(
         children: [
           if (_showGrid)
             CustomPaint(
@@ -53,15 +56,15 @@ class _InteractiveBoardState extends State<InteractiveBoard> {
               onDragUpdate: (details) {
                 Offset newPosition = widgetData.offset + details.delta;
                 //widgetData.offset = newPosition;
-                if (_snapToGrid) {
-                  _snapWidgetsToGrid();
-                }
                 // if (_snapToGrid) {
-                //   newPosition = Offset(
-                //     (newPosition.dx / 50).round() * 50,
-                //     (newPosition.dy / 50).round() * 50,
-                //   );
+                //   _snapWidgetsToGrid();
                 // }
+                if (_snapToGrid) {
+                  newPosition = Offset(
+                    (newPosition.dx / 50).round() * 50,
+                    (newPosition.dy / 50).round() * 50,
+                  );
+                }
                 setState(() {
                   widgetData.offset = newPosition;
                 });
@@ -93,22 +96,7 @@ class _InteractiveBoardState extends State<InteractiveBoard> {
           setState(() {
             _widgets.add(WidgetData(
               child:
-              Container(
-                width: 100,
-                height: 100,
-                decoration: BoxDecoration(
-                  color: Colors
-                      .primaries[Random().nextInt(Colors.primaries.length)],
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Center(
-                  child: Text(
-                    'Widget ${_widgets.length + 1}',
-                    style: TextStyle(fontSize: 18),
-                  ),
-                ),
-              ),
-
+              DraggableWidget(i:_widgets.length + 1),
               offset: Offset(0, 0),
             ));
           });
