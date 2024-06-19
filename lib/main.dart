@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:halonot/global_values.dart';
 import 'package:halonot/widget/parent_resizable_widget.dart';
+import 'package:halonot/widget/resizables.dart' as r;
 import 'dart:math';
 
 import 'package:halonot/widget/parent_widget.dart';
@@ -118,6 +119,7 @@ class _InteractiveBoardState extends State<InteractiveBoard> {
                   _widgets.add(WidgetData(
                       child: ParentResizableWidget(
                         gridSize: grid_step as double,
+                        // child: ParentWidget(),
                       ),
                       offset: Offset(0, 0)));
               });
