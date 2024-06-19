@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:halonot/global_values.dart';
-import 'package:halonot/widget/parent_resizable_widget.dart';
-import 'package:halonot/widget/resizables.dart' as r;
-import 'dart:math';
-
 import 'package:halonot/widget/parent_widget.dart';
+import 'package:halonot/widget/parent_resizable_widget.dart';
 
 void main() {
   runApp(MyApp());
@@ -112,16 +109,31 @@ class _InteractiveBoardState extends State<InteractiveBoard> {
           ).then((value) {
             if (value != null) {
               setState(() {
-                if (value == 'ParentWidget')
-                  _widgets.add(
-                      WidgetData(child: ParentWidget(), offset: Offset(0, 0)));
-                else if (value == 'ParentResizableWidget')
-                  _widgets.add(WidgetData(
-                      child: ParentResizableWidget(
-                        gridSize: grid_step as double,
-                        // child: ParentWidget(),
+                //if (value == 'ParentWidget')
+                _widgets.add(WidgetData(
+                    child: Container(
+                      width: 100,
+                      height: 100,
+                      decoration: BoxDecoration(
+                        color: Colors
+                            .amber, //Colors.primaries[Random().nextInt(Colors.primaries.length)],
+                        borderRadius: BorderRadius.circular(10),
                       ),
-                      offset: Offset(0, 0)));
+                      child: const Center(
+                        child: Text(
+                          'Widget',
+                          style: TextStyle(fontSize: 18),
+                        ),
+                      ),
+                    ),
+                    offset: Offset(0, 0)));
+                // else if (value == 'ParentResizableWidget')
+                //   _widgets.add(WidgetData(
+                //       child: ParentResizableWidget(
+                //         gridSize: grid_step as double,
+                //         // child: ParentWidget(),
+                //       ),
+                //       offset: Offset(0, 0)));
               });
             }
           });
