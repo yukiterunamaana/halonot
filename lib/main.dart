@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:halonot/global_values.dart';
+import 'package:halonot/summon_widget.dart';
 import 'package:halonot/widget/parent_widget.dart';
 import 'package:halonot/widget/parent_resizable_widget.dart';
 
@@ -110,23 +111,25 @@ class _InteractiveBoardState extends State<InteractiveBoard> {
             if (value != null) {
               setState(() {
                 //if (value == 'ParentWidget')
-                _widgets.add(WidgetData(
-                    child: Container(
-                      width: 100,
-                      height: 100,
-                      decoration: BoxDecoration(
-                        color: Colors
-                            .amber, //Colors.primaries[Random().nextInt(Colors.primaries.length)],
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: const Center(
-                        child: Text(
-                          'Widget',
-                          style: TextStyle(fontSize: 18),
-                        ),
-                      ),
-                    ),
-                    offset: Offset(0, 0)));
+                summon(_widgets);
+                // _widgets.add(WidgetData(
+                //     child: Container(
+                //       width: 100,
+                //       height: 100,
+                //       decoration: BoxDecoration(
+                //         color: Colors
+                //             .amber, //Colors.primaries[Random().nextInt(Colors.primaries.length)],
+                //         borderRadius: BorderRadius.circular(10),
+                //       ),
+                //       child: const Center(
+                //         child: Text(
+                //           'Widget',
+                //           style: TextStyle(fontSize: 18),
+                //         ),
+                //       ),
+                //     ),
+                //     offset: Offset(0, 0)));
+
                 // else if (value == 'ParentResizableWidget')
                 //   _widgets.add(WidgetData(
                 //       child: ParentResizableWidget(
