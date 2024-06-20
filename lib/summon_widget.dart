@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:halonot/main.dart';
 import 'package:halonot/widget/parent_widget.dart';
 
-void summon(List<WidgetData> _widgets, Widget contents) async {
+void summon(
+    List<WidgetData> _widgets, Widget contents, double w, double h) async {
   _widgets.add(WidgetData(
       child: Container(
-        width: 400,
-        height: 400,
+        width: w,
+        height: h,
         decoration: BoxDecoration(
           color: Colors
               .amber, //Colors.primaries[Random().nextInt(Colors.primaries.length)],

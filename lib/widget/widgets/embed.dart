@@ -1,35 +1,23 @@
-// // /*
-// // <iframe width="560" height="315" src="https://www.youtube.com/embed/jfKfPfyJRdk?si=UZT-A4NoMQfmBApT&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-// // * */
-// import 'package:flutter/material.dart';
-// import 'package:webview_flutter/webview_flutter.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 
-// class HtmlEmbedContainer extends StatefulWidget {
-//   @override
-//   _HtmlEmbedContainerState createState() => _HtmlEmbedContainerState();
-// }
+const String vid =
+    '<iframe width="560" height="315" src="https://www.youtube.com/embed/jfKfPfyJRdk?si=UZT-A4NoMQfmBApT&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
 
-// class _HtmlEmbedContainerState extends State<HtmlEmbedContainer> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       width: 300,
-//       height: 200,
-//       child: WebView(
-//         initialUrl: Uri.dataFromString(
-//           '''
-//           <html>
-//             <body>
-//               <h1>Hello World!</h1>
-//               <p>This is an HTML embed.</p>
-//               <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
-//             </body>
-//           </html>
-//           ''',
-//           mimeType: 'text/html',
-//         ).toString(),
-//         javascriptMode: JavascriptMode.unrestricted,
-//       ),
-//     );
-//   }
-// }
+class HtmlEmbed extends StatefulWidget {
+  final String htmlContent;
+
+  HtmlEmbed({required this.htmlContent});
+
+  @override
+  _HtmlEmbedState createState() => _HtmlEmbedState();
+}
+
+class _HtmlEmbedState extends State<HtmlEmbed> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: HtmlWidget(widget.htmlContent),
+    );
+  }
+}

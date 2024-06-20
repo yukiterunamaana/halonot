@@ -5,8 +5,11 @@ import 'package:halonot/widget/parent_widget.dart';
 import 'package:halonot/widget/parent_resizable_widget.dart';
 import 'package:halonot/widget/widgets/calendar.dart';
 import 'package:halonot/widget/widgets/clock.dart';
+import 'package:halonot/widget/widgets/embed.dart';
 import 'package:halonot/widget/widgets/image_frame.dart';
 import 'package:halonot/widget/widgets/text.dart';
+import 'package:one_clock/one_clock.dart';
+import 'package:pair/pair.dart';
 
 void main() {
   runApp(MyApp());
@@ -93,7 +96,10 @@ class _InteractiveBoardState extends State<InteractiveBoard> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          showMenu<StatefulWidget>(
+          showMenu<
+                  Pair<StatefulWidget,
+                      Pair<double, double>>> //somebody, please, kill me.
+              (
             context: context,
             position: RelativeRect.fromLTRB(100, 100, 100, 100),
             items: [
@@ -107,19 +113,23 @@ class _InteractiveBoardState extends State<InteractiveBoard> {
               // ),
               PopupMenuItem(
                 child: Text('Add Calendar'),
-                value: CalendarWidget(),
+                value: Pair(CalendarWidget(),
+                    Pair(400, 350)), //<CalendarWidget(),Pair<int,int>>,
               ),
               PopupMenuItem(
                 child: Text('Add Analog Clock'),
-                value: ClockWidget(),
+                value: Pair(ClockWidget(), Pair(150, 150)),
               ),
               PopupMenuItem(
                 child: Text('Add Digital Clock'),
-                value: DigitalClockWidget(),
+                value: Pair(DigitalClockWidget(), Pair(100, 50)),
               ),
               // PopupMenuItem(
               //   child: Text('Add HTML embed'),
-              //   value: '',
+              //   value:
+              //   HtmlEmbed(
+              //     htmlContent: vid,
+              //   ),
               // ),
               // PopupMenuItem(
               //   child: Text('Add Image'),
@@ -127,7 +137,7 @@ class _InteractiveBoardState extends State<InteractiveBoard> {
               // ),
               PopupMenuItem(
                 child: Text('Add Text'),
-                value: MarkdownNotepad(),
+                value: Pair(MarkdownNotepad(), Pair(400, 400)),
               ),
               // PopupMenuItem(
               //   child: Text('Add Video'),
@@ -146,7 +156,8 @@ class _InteractiveBoardState extends State<InteractiveBoard> {
                 );
 
                 //if (value == 'ParentWidget')
-                summon(_widgets, value);
+                summon(_widgets, value.key, value.value.key,
+                    value.value.value); //I hate myself as much as you hate me
                 //summon(_widgets, stub);
 
                 // _widgets.add(WidgetData(
@@ -190,7 +201,7 @@ class _InteractiveBoardState extends State<InteractiveBoard> {
         return AlertDialog(
           title: Text('Snap to Grid'),
           content: Text(
-              'Some widgets are not aligned to the grid. Do you want to snap them to the grid?'),
+              'Some widgets might be not aligned to the grid. Do you want to snap them to the grid?'),
           actions: [
             TextButton(
               child: Text('No'),

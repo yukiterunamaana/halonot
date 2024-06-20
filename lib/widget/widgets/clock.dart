@@ -13,7 +13,9 @@ class _DigitalClockWidgetState extends State<DigitalClockWidget> {
   @override
   Widget build(BuildContext context) {
     return const DigitalClock(
+      format: "HH:MM",
       isLive: true,
+      showSeconds: false,
     );
   }
 }
@@ -39,6 +41,7 @@ class _ClockWidgetState extends State<ClockWidget> {
       isLive: true,
       showDigitalClock: false,
       showSecondHand: true,
+      textScaleFactor: 1.8,
     );
   }
 }
