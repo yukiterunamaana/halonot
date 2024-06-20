@@ -6,6 +6,7 @@ import 'package:halonot/widget/parent_resizable_widget.dart';
 import 'package:halonot/widget/widgets/calendar.dart';
 import 'package:halonot/widget/widgets/clock.dart';
 import 'package:halonot/widget/widgets/image_frame.dart';
+import 'package:halonot/widget/widgets/text.dart';
 
 void main() {
   runApp(MyApp());
@@ -95,7 +96,7 @@ class _InteractiveBoardState extends State<InteractiveBoard> {
           showMenu<StatefulWidget>(
             context: context,
             position: RelativeRect.fromLTRB(100, 100, 100, 100),
-            items: const [
+            items: [
               // PopupMenuItem(
               //   child: Text('Add ParentWidget'),
               //   value: ParentWidget(stubWidget as Widget),
@@ -124,10 +125,10 @@ class _InteractiveBoardState extends State<InteractiveBoard> {
               //   child: Text('Add Image'),
               //   value: ResizableImage(),
               // ),
-              // PopupMenuItem(
-              //   child: Text('Add Text'),
-              //   value: '',
-              // ),
+              PopupMenuItem(
+                child: Text('Add Text'),
+                value: MarkdownNotepad(),
+              ),
               // PopupMenuItem(
               //   child: Text('Add Video'),
               //   value: '',

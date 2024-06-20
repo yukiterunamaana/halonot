@@ -11,10 +11,20 @@ class CalendarWidget extends StatefulWidget {
 class _classNameState extends State<CalendarWidget> {
   @override
   Widget build(BuildContext context) {
-    return TableCalendar(
+    return Material(
+        child: TableCalendar(
+      calendarStyle: CalendarStyle(
+        todayDecoration:
+            BoxDecoration(shape: BoxShape.circle, color: Colors.black),
+        todayTextStyle: TextStyle(fontSize: 18, color: Colors.white),
+        defaultTextStyle: TextStyle(fontSize: 18, color: Colors.black),
+        weekendTextStyle: TextStyle(fontSize: 18, color: Colors.red),
+        holidayTextStyle: TextStyle(fontSize: 18, color: Colors.red),
+      ),
       headerVisible: false,
       daysOfWeekVisible: false,
       pageAnimationEnabled: false,
+      sixWeekMonthsEnforced: true,
       firstDay: DateTime.utc(DateTime.now().year, DateTime.now().month, 1),
       lastDay: DateTime.utc(
           DateTime.now().year,
@@ -25,6 +35,6 @@ class _classNameState extends State<CalendarWidget> {
               .duration
               .inDays),
       focusedDay: DateTime.now(),
-    );
+    ));
   }
 }
