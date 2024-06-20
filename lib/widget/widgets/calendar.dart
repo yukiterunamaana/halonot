@@ -12,6 +12,9 @@ class _classNameState extends State<CalendarWidget> {
   @override
   Widget build(BuildContext context) {
     return TableCalendar(
+      headerVisible: false,
+      daysOfWeekVisible: false,
+      pageAnimationEnabled: false,
       firstDay: DateTime.utc(DateTime.now().year, DateTime.now().month, 1),
       lastDay: DateTime.utc(
           DateTime.now().year,

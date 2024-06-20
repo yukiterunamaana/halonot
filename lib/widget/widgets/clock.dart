@@ -13,7 +13,7 @@ class _DigitalClockWidgetState extends State<DigitalClockWidget> {
   @override
   Widget build(BuildContext context) {
     return const DigitalClock(
-      isLive: false,
+      isLive: true,
     );
   }
 }
@@ -27,7 +27,7 @@ class ClockWidget extends StatefulWidget {
 
 class _ClockWidgetState extends State<ClockWidget> {
   Widget w = const AnalogClock(
-    isLive: false,
+    isLive: true,
     showDigitalClock: false,
     showSecondHand: true,
   );
@@ -36,7 +36,7 @@ class _ClockWidgetState extends State<ClockWidget> {
   Widget build(BuildContext context) {
     return //ParentWidget(content: w);
         AnalogClock(
-      isLive: false,
+      isLive: true,
       showDigitalClock: false,
       showSecondHand: true,
     );

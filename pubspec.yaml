@@ -49,6 +49,9 @@ dependencies:
   table_calendar: ^3.0.9
   one_clock: ^2.0.0
   flutter_draggable_gridview: ^0.0.12
+  flutter_box_transform: ^0.4.4
+  video_player: ^2.8.7
+  image_picker: ^1.1.2
 
 dev_dependencies:
   flutter_test:

@@ -3,6 +3,9 @@ import 'package:halonot/global_values.dart';
 import 'package:halonot/summon_widget.dart';
 import 'package:halonot/widget/parent_widget.dart';
 import 'package:halonot/widget/parent_resizable_widget.dart';
+import 'package:halonot/widget/widgets/calendar.dart';
+import 'package:halonot/widget/widgets/clock.dart';
+import 'package:halonot/widget/widgets/image_frame.dart';
 
 void main() {
   runApp(MyApp());
@@ -89,29 +92,62 @@ class _InteractiveBoardState extends State<InteractiveBoard> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          showMenu(
+          showMenu<StatefulWidget>(
             context: context,
             position: RelativeRect.fromLTRB(100, 100, 100, 100),
-            items: [
+            items: const [
+              // PopupMenuItem(
+              //   child: Text('Add ParentWidget'),
+              //   value: ParentWidget(stubWidget as Widget),
+              // ),
+              // PopupMenuItem(
+              //   child: Text('Add ParentResizableWidget'),
+              //   value: ResizableParentWidget(stubWidget as Widget),
+              // ),
               PopupMenuItem(
-                child: Text('Add ParentWidget'),
-                value: 'ParentWidget',
+                child: Text('Add Calendar'),
+                value: CalendarWidget(),
               ),
               PopupMenuItem(
-                child: Text('Add ParentResizableWidget'),
-                value: 'ParentResizableWidget',
+                child: Text('Add Analog Clock'),
+                value: ClockWidget(),
+              ),
+              PopupMenuItem(
+                child: Text('Add Digital Clock'),
+                value: DigitalClockWidget(),
               ),
               // PopupMenuItem(
-              //   child: Text('Add Blue Widget'),
-              //   value: 'blue',
+              //   child: Text('Add HTML embed'),
+              //   value: '',
+              // ),
+              // PopupMenuItem(
+              //   child: Text('Add Image'),
+              //   value: ResizableImage(),
+              // ),
+              // PopupMenuItem(
+              //   child: Text('Add Text'),
+              //   value: '',
+              // ),
+              // PopupMenuItem(
+              //   child: Text('Add Video'),
+              //   value: '',
               // ),
             ],
             elevation: 8.0,
           ).then((value) {
             if (value != null) {
               setState(() {
+                Widget stub = const Center(
+                  child: Text(
+                    'Widget',
+                    style: TextStyle(fontSize: 18),
+                  ),
+                );
+
                 //if (value == 'ParentWidget')
-                summon(_widgets);
+                summon(_widgets, value);
+                //summon(_widgets, stub);
+
                 // _widgets.add(WidgetData(
                 //     child: Container(
                 //       width: 100,

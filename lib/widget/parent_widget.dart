@@ -35,7 +35,7 @@ class _ParentWidgetState extends State<ParentWidget> {
             .amber, //Colors.primaries[Random().nextInt(Colors.primaries.length)],
         borderRadius: BorderRadius.circular(10),
       ),
-      child: widget.content,
+      child: SizedBox.expand(child: widget.content),
     );
   }
 }
