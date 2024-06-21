@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:halonot/main.dart';
 import 'package:halonot/widget/parent_widget.dart';
+import 'dart:html';
+import 'dart:ui' as ui;
 
 void summon(
     List<WidgetData> _widgets, Widget contents, double w, double h) async {
@@ -8,9 +10,10 @@ void summon(
       child: Container(
         width: w,
         height: h,
+
         decoration: BoxDecoration(
-          color: Colors
-              .amber, //Colors.primaries[Random().nextInt(Colors.primaries.length)],
+          // color: Colors
+          //     .amber, //Colors.primaries[Random().nextInt(Colors.primaries.length)],
 
           borderRadius: BorderRadius.circular(10),
         ),

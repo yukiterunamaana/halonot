@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:halonot/global_values.dart';
 import 'package:halonot/summon_widget.dart';
-import 'package:halonot/widget/parent_widget.dart';
-import 'package:halonot/widget/parent_resizable_widget.dart';
-import 'package:halonot/widget/widgets/calendar.dart';
-import 'package:halonot/widget/widgets/clock.dart';
-import 'package:halonot/widget/widgets/embed.dart';
-import 'package:halonot/widget/widgets/image_frame.dart';
-import 'package:halonot/widget/widgets/text.dart';
-import 'package:one_clock/one_clock.dart';
+import 'package:halonot/widget/widgets/embed_example.dart';
+import 'package:halonot/widgets_list.dart';
 import 'package:pair/pair.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(IframeScreen());
+  //runApp(MyApp());
+  //EmbedCodeWidget
 }
 
 class MyApp extends StatelessWidget {
@@ -39,7 +35,6 @@ class _InteractiveBoardState extends State<InteractiveBoard> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Interactive Board'),
         actions: [
           Switch(
             value: _showGrid,
@@ -102,48 +97,7 @@ class _InteractiveBoardState extends State<InteractiveBoard> {
               (
             context: context,
             position: RelativeRect.fromLTRB(100, 100, 100, 100),
-            items: [
-              // PopupMenuItem(
-              //   child: Text('Add ParentWidget'),
-              //   value: ParentWidget(stubWidget as Widget),
-              // ),
-              // PopupMenuItem(
-              //   child: Text('Add ParentResizableWidget'),
-              //   value: ResizableParentWidget(stubWidget as Widget),
-              // ),
-              PopupMenuItem(
-                child: Text('Add Calendar'),
-                value: Pair(CalendarWidget(),
-                    Pair(400, 350)), //<CalendarWidget(),Pair<int,int>>,
-              ),
-              PopupMenuItem(
-                child: Text('Add Analog Clock'),
-                value: Pair(ClockWidget(), Pair(150, 150)),
-              ),
-              PopupMenuItem(
-                child: Text('Add Digital Clock'),
-                value: Pair(DigitalClockWidget(), Pair(100, 50)),
-              ),
-              // PopupMenuItem(
-              //   child: Text('Add HTML embed'),
-              //   value:
-              //   HtmlEmbed(
-              //     htmlContent: vid,
-              //   ),
-              // ),
-              // PopupMenuItem(
-              //   child: Text('Add Image'),
-              //   value: ResizableImage(),
-              // ),
-              PopupMenuItem(
-                child: Text('Add Text'),
-                value: Pair(MarkdownNotepad(), Pair(400, 400)),
-              ),
-              // PopupMenuItem(
-              //   child: Text('Add Video'),
-              //   value: '',
-              // ),
-            ],
+            items: widgetList,
             elevation: 8.0,
           ).then((value) {
             if (value != null) {
@@ -156,10 +110,13 @@ class _InteractiveBoardState extends State<InteractiveBoard> {
                 );
 
                 //if (value == 'ParentWidget')
-                summon(_widgets, value.key, value.value.key,
-                    value.value.value); //I hate myself as much as you hate me
+                summon(
+                    _widgets,
+                    value.key,
+                    value.value.key,
+                    value.value
+                        .value); //I hate myself as much as you hate me reading this
                 //summon(_widgets, stub);
-
                 // _widgets.add(WidgetData(
                 //     child: Container(
                 //       width: 100,

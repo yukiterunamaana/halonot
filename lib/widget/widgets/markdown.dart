@@ -32,7 +32,6 @@ class _MarkdownNotepadState extends State<MarkdownNotepad> {
                 maxLines: null,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  labelText: 'Markdown',
                 ),
               ),
             ),

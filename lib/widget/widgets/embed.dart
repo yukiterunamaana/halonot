@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 
 const String vid =
