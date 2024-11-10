@@ -4,7 +4,7 @@ import 'package:halonot/summon_widget.dart';
 import 'package:halonot/widget/widgets/calendar.dart';
 import 'package:halonot/widget/widgets/clock.dart';
 import 'package:halonot/widget/widgets/embed.dart';
-import 'package:halonot/widget/widgets/image_frame.dart';
+//import 'package:halonot/widget/widgets/image_frame.dart';
 import 'package:halonot/widget/widgets/text.dart';
 import 'package:pair/pair.dart';
 
