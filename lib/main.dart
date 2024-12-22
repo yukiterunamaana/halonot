@@ -3,7 +3,7 @@ import 'package:halonot/global_values.dart';
 import 'package:halonot/summon_widget.dart';
 //import 'package:halonot/widget/widgets/embed_example.dart';
 import 'package:halonot/widgets_list.dart';
-import 'package:halonot/grid.dart';
+//import 'package:halonot/grid.dart';
 import 'package:pair/pair.dart';
 
 void main() {
@@ -57,6 +57,11 @@ class _InteractiveBoardState extends State<InteractiveBoard> {
       body: Stack(
         children: [
           if (_showGrid)
+            // GridPaper(
+            //     color: Colors.grey[300]!, // Color of the grid lines
+            //     divisions: 10, // Number of divisions in the grid
+            //     interval: 50.0, // Spacing between grid lines
+            // )
             CustomPaint(
               painter: GridPainter(),
               size: Size.infinite,
@@ -65,7 +70,6 @@ class _InteractiveBoardState extends State<InteractiveBoard> {
                 left: widgetData.offset.dx,
                 top: widgetData.offset.dy,
                 child: LongPressDraggable(
-                  child: widgetData.child,
                   feedback: widgetData.child,
                   onDragStarted: () {
                     print('Drag started');
@@ -86,6 +90,7 @@ class _InteractiveBoardState extends State<InteractiveBoard> {
                     print('Drag ended');
                     if (_snapToGrid) _snapWidgetsToGrid();
                   },
+                  child: widgetData.child,
                 ),
               )),
         ],
@@ -97,7 +102,7 @@ class _InteractiveBoardState extends State<InteractiveBoard> {
                       Pair<double, double>>> //somebody, please, kill me.
               (
             context: context,
-            position: RelativeRect.fromLTRB(100, 100, 100, 100),
+            position: const RelativeRect.fromLTRB(100, 100, 100, 100),
             items: widgetList,
             elevation: 8.0,
           ).then((value) {
@@ -157,18 +162,18 @@ class _InteractiveBoardState extends State<InteractiveBoard> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text('Snap to Grid'),
-          content: Text(
+          title: const Text('Snap to Grid'),
+          content: const Text(
               'Some widgets might be not aligned to the grid. Do you want to snap them to the grid?'),
           actions: [
             TextButton(
-              child: Text('No'),
+              child: const Text('No'),
               onPressed: () {
                 Navigator.of(context).pop(false);
               },
             ),
             TextButton(
-              child: Text('Yes'),
+              child: const Text('Yes'),
               onPressed: () {
                 Navigator.of(context).pop(true);
               },

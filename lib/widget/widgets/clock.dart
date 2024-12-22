@@ -3,7 +3,7 @@ import 'package:halonot/widget/parent_widget.dart';
 import 'package:one_clock/one_clock.dart';
 
 class DigitalClockWidget extends StatefulWidget {
-  const DigitalClockWidget({Key? key}) : super(key: key);
+  const DigitalClockWidget({super.key});
 
   @override
   State<DigitalClockWidget> createState() => _DigitalClockWidgetState();

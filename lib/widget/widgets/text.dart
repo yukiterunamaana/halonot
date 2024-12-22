@@ -292,6 +292,8 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:markdown/markdown.dart' as md;
 
 class MarkdownNotepad extends StatefulWidget {
+  const MarkdownNotepad({super.key});
+
   @override
   _MarkdownNotepadState createState() => _MarkdownNotepadState();
 }
@@ -345,7 +347,7 @@ class _MarkdownNotepadState extends State<MarkdownNotepad> {
               child: TextField(
                 controller: _controller,
                 maxLines: null,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Markdown',
                 ),

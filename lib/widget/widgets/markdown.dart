@@ -3,6 +3,8 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:markdown/markdown.dart' as md;
 
 class MarkdownNotepad extends StatefulWidget {
+  const MarkdownNotepad({super.key});
+
   @override
   _MarkdownNotepadState createState() => _MarkdownNotepadState();
 }
