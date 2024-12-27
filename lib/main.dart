@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:halonot/global_values.dart';
 import 'package:halonot/summon_widget.dart';
-//import 'package:halonot/widget/widgets/embed_example.dart';
 import 'package:halonot/widgets_list.dart';
-//import 'package:halonot/grid.dart';
+import 'package:halonot/grid_painter.dart';
 import 'package:pair/pair.dart';
 
 void main() {
-  //runApp(IframeScreen());
   runApp(MyApp());
-  //EmbedCodeWidget
 }
 
 class MyApp extends StatelessWidget {
@@ -57,11 +54,6 @@ class _InteractiveBoardState extends State<InteractiveBoard> {
       body: Stack(
         children: [
           if (_showGrid)
-            // GridPaper(
-            //     color: Colors.grey[300]!, // Color of the grid lines
-            //     divisions: 10, // Number of divisions in the grid
-            //     interval: 50.0, // Spacing between grid lines
-            // )
             CustomPaint(
               painter: GridPainter(),
               size: Size.infinite,
@@ -76,12 +68,6 @@ class _InteractiveBoardState extends State<InteractiveBoard> {
                   },
                   onDragUpdate: (details) {
                     Offset newPosition = widgetData.offset + details.delta;
-                    // if (_snapToGrid) {
-                    //   newPosition = Offset(
-                    //     (newPosition.dx / 50).round() * 50,
-                    //     (newPosition.dy / 50).round() * 50,
-                    //   );
-                    // }
                     setState(() {
                       widgetData.offset = newPosition;
                     });
@@ -114,7 +100,6 @@ class _InteractiveBoardState extends State<InteractiveBoard> {
                     style: TextStyle(fontSize: 18),
                   ),
                 );
-
                 //if (value == 'ParentWidget')
                 summon(
                     _widgets,
@@ -122,32 +107,6 @@ class _InteractiveBoardState extends State<InteractiveBoard> {
                     value.value.key,
                     value.value
                         .value); //I hate myself as much as you hate me reading this
-                //summon(_widgets, stub);
-                // _widgets.add(WidgetData(
-                //     child: Container(
-                //       width: 100,
-                //       height: 100,
-                //       decoration: BoxDecoration(
-                //         color: Colors
-                //             .amber, //Colors.primaries[Random().nextInt(Colors.primaries.length)],
-                //         borderRadius: BorderRadius.circular(10),
-                //       ),
-                //       child: const Center(
-                //         child: Text(
-                //           'Widget',
-                //           style: TextStyle(fontSize: 18),
-                //         ),
-                //       ),
-                //     ),
-                //     offset: Offset(0, 0)));
-
-                // else if (value == 'ParentResizableWidget')
-                //   _widgets.add(WidgetData(
-                //       child: ParentResizableWidget(
-                //         gridSize: grid_step as double,
-                //         // child: ParentWidget(),
-                //       ),
-                //       offset: Offset(0, 0)));
               });
             }
           });
@@ -204,24 +163,24 @@ class WidgetData {
   WidgetData({required this.child, required this.offset});
 }
 
-class GridPainter extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    final paint = Paint()
-      ..color = Colors.grey
-      ..strokeWidth = 0.5;
+// class GridPainter extends CustomPainter {
+//   @override
+//   void paint(Canvas canvas, Size size) {
+//     final paint = Paint()
+//       ..color = Colors.grey
+//       ..strokeWidth = 0.5;
 
-    for (int i = 0; i < size.height; i += 50) {
-      canvas.drawLine(
-          Offset(0, i.toDouble()), Offset(size.width, i.toDouble()), paint);
-    }
+//     for (int i = 0; i < size.height; i += 50) {
+//       canvas.drawLine(
+//           Offset(0, i.toDouble()), Offset(size.width, i.toDouble()), paint);
+//     }
 
-    for (int i = 0; i < size.width; i += 50) {
-      canvas.drawLine(
-          Offset(i.toDouble(), 0), Offset(i.toDouble(), size.height), paint);
-    }
-  }
+//     for (int i = 0; i < size.width; i += 50) {
+//       canvas.drawLine(
+//           Offset(i.toDouble(), 0), Offset(i.toDouble(), size.height), paint);
+//     }
+//   }
 
-  @override
-  bool shouldRepaint(GridPainter oldDelegate) => false;
-}
+//   @override
+//   bool shouldRepaint(GridPainter oldDelegate) => false;
+// }
