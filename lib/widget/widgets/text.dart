@@ -289,6 +289,7 @@
 // }
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:markdown/markdown.dart' as md;
 
 class MarkdownNotepad extends StatefulWidget {
@@ -324,45 +325,53 @@ class _MarkdownNotepadState extends State<MarkdownNotepad> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Markdown Notepad'),
-        actions: [
-          Switch(
-            value: _isEditMode,
-            onChanged: (value) {
-              setState(() {
-                _isEditMode = value;
-              });
-            },
+    return Container(
+        decoration: BoxDecoration(
+          border: const GradientBoxBorder(
+            gradient: LinearGradient(colors: [Colors.black, Colors.black]),
+            width: 4,
           ),
-        ],
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Stack(
-          children: [
-            Visibility(
-              visible: _isEditMode,
-              child: TextField(
-                controller: _controller,
-                maxLines: null,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Markdown',
-                ),
-              ),
-            ),
-            Visibility(
-              visible: !_isEditMode,
-              child: MarkdownBody(
-                data: _controller.text,
-                extensionSet: _extensionSet,
-              ),
-            ),
-          ],
+          //borderRadius: BorderRadius.circular(16),
         ),
-      ),
-    );
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text('Markdown Notepad'),
+            actions: [
+              Switch(
+                value: _isEditMode,
+                onChanged: (value) {
+                  setState(() {
+                    _isEditMode = value;
+                  });
+                },
+              ),
+            ],
+          ),
+          body: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Stack(
+              children: [
+                Visibility(
+                  visible: _isEditMode,
+                  child: TextField(
+                    controller: _controller,
+                    maxLines: null,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Markdown',
+                    ),
+                  ),
+                ),
+                Visibility(
+                  visible: !_isEditMode,
+                  child: MarkdownBody(
+                    data: _controller.text,
+                    extensionSet: _extensionSet,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ));
   }
 }
