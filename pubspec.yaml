@@ -50,11 +50,8 @@ dependencies:
   #video_player: ^2.8.7
   #image_picker: ^1.1.2
   pair: ^0.1.2
-<<<<<<< HEAD
   gap: ^3.0.1
-=======
-  gradient_borders: ^1.0.1
->>>>>>> 6fbe7447a3f71403ede9dce6646d0a7bdf44caee
+  gradient_borders: ^1.0.2
 
 dev_dependencies:
   flutter_test:
