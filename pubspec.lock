@@ -136,6 +136,7 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+<<<<<<< HEAD
   gap:
     dependency: "direct main"
     description:
@@ -144,6 +145,16 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.1"
+=======
+  gradient_borders:
+    dependency: "direct main"
+    description:
+      name: gradient_borders
+      sha256: b1cd969552c83f458ff755aa68e13a0327d09f06c3f42f471b423b01427f21f8
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.1"
+>>>>>>> 6fbe7447a3f71403ede9dce6646d0a7bdf44caee
   intl:
     dependency: transitive
     description:
