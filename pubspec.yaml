@@ -50,6 +50,7 @@ dependencies:
   #video_player: ^2.8.7
   #image_picker: ^1.1.2
   pair: ^0.1.2
+  gap: ^3.0.1
 
 dev_dependencies:
   flutter_test:
