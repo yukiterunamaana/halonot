@@ -3,6 +3,8 @@ import 'package:halonot/widget/widgets/calendar.dart';
 import 'package:halonot/widget/widgets/clock.dart';
 import 'package:halonot/widget/widgets/parentfile_decoy.dart';
 import 'package:halonot/widget/widgets/text.dart';
+import 'package:halonot/widget/widgets/currency_ticker.dart';
+import 'package:halonot/widget/widgets/stock_ticker.dart';
 import 'package:pair/pair.dart';
 
 List<PopupMenuEntry<Pair<StatefulWidget, Pair<double, double>>>> widgetList = [
@@ -31,6 +33,16 @@ List<PopupMenuEntry<Pair<StatefulWidget, Pair<double, double>>>> widgetList = [
   PopupMenuItem(
     child: Text('Add Demo'),
     value: Pair(TextWithCorners(), Pair(200, 200)),
+  ),
+
+  PopupMenuItem(
+    child: Text('Add Currency'),
+    value: Pair(CurrencyTicker(), Pair(200, 100)),
+  ),
+
+  PopupMenuItem(
+    child: Text('Add Stock'),
+    value: Pair(StockTicker(), Pair(200, 100)),
   ),
 ];
 
